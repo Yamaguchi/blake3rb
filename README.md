@@ -6,6 +6,10 @@ TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
+This library contains native extension made by Rust.
+First, you must install Rust and Cargo.
+see https://doc.rust-lang.org/cargo/getting-started/installation.html
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -22,7 +26,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "blake3"
+
+Blake3.hexdigest("hoge")
+# => af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262
+```
 
 ## Development
 
