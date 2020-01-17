@@ -30,7 +30,7 @@ Or install it yourself as:
 require "blake3"
 
 Blake3.hexdigest("hoge")
-# => af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262
+# => 77412ee5089c51bcf6568c621aa3a83081a6477b576ff19bfb31e9d657acd91a
 ```
 
 ## Development
