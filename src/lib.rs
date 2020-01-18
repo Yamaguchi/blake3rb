@@ -23,19 +23,4 @@ ruby! {
             format!("{}", self.hasher.finalize().to_hex())
         }
     }
-
-    class Blake3Internal {
-        struct {
-        }
-
-        def initialize(helix) {
-            Blake3Internal { helix }
-        }
-
-        def from_hex(&self, hex: std::string::String) ->  std::string::String {
-            let decoded = hex::decode(hex).expect("Decoding failed");
-            let hash = blake3::hash(&decoded[..]);
-            format!("{}", hash.to_hex())
-        }
-    }
 }

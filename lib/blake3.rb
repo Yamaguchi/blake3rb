@@ -7,13 +7,11 @@ module Blake3
   module_function
 
   def hexdigest(plain)
-    hex = plain.unpack1("H*")
-    Blake3Internal.new.from_hex(hex)
+    Hasher.hexdigest(plain)
   end
 
   def digest(plain)
-    hex = hexdigest(plain)
-    [hex].pack("H*")
+    Hasher.digest(plain)
   end
 
   class Hasher
@@ -24,10 +22,27 @@ module Blake3
     def update(plain)
       hex = plain.unpack1("H*")
       @hasher.update(hex)
+      self
     end
 
     def finalize
       @hasher.finalize
+    end
+
+    def self.digest(plain)
+      new.update(plain).digest
+    end
+
+    def self.hexdigest(plain)
+      new.update(plain).hexdigest
+    end
+
+    def digest
+      [hexdigest].pack("H*")
+    end
+
+    def hexdigest
+      finalize
     end
   end
 end
