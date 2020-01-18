@@ -9,6 +9,7 @@
 /target/
 /vendor/
 *.bundle
+Cargo.lock
 
 # rspec failure tracking
 .rspec_status
