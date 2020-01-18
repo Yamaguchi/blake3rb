@@ -10,6 +10,7 @@
 /vendor/
 *.bundle
 Cargo.lock
+Gemfile.lock
 
 # rspec failure tracking
 .rspec_status
