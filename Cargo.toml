@@ -1,5 +1,5 @@
 [package]
-name = "blake3"
+name = "blake3native"
 version = "0.1.0"
 authors = ["Hajime Yamaguchi <gen.yamaguchi0@gmail.com>"]
 edition = "2018"
@@ -11,4 +11,3 @@ crate-type = ["cdylib"]
 blake3 = "0.1.1"
 helix = "0.7.5"
 hex = "0.3"
-
