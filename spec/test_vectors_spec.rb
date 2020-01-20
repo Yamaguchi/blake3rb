@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'json'
 
 # The input in each case is filled with a 251-byte-long repeating pattern:
 # 0, 1, 2, ..., 249, 250, 0, 1, ...
 def create_input(len)
-  (0...len).map { |i| i % 251 }.pack("C*")
+  (0...len).map { |i| i % 251 }.pack('C*')
 end
 
 RSpec.describe 'TestVectors' do

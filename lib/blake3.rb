@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'helix_runtime'
 
 require 'blake3native/native'
-require "blake3/version"
+require 'blake3/version'
 
 module Blake3
   module_function
@@ -17,7 +19,7 @@ module Blake3
   class Hasher
     def initialize(key: nil)
       if key
-        hex = key.unpack1("H*")
+        hex = key.unpack1('H*')
         @hasher = Blake3KeyedHasher.new(hex)
       else
         @hasher = Blake3Hasher.new
@@ -25,7 +27,7 @@ module Blake3
     end
 
     def update(plain)
-      hex = plain.unpack1("H*")
+      hex = plain.unpack1('H*')
       @hasher.update(hex)
       self
     end
@@ -43,7 +45,7 @@ module Blake3
     end
 
     def digest
-      [hexdigest].pack("H*")
+      [hexdigest].pack('H*')
     end
 
     def hexdigest

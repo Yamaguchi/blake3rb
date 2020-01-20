@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RAKEFILE = 'native.rake'
 
 def command_exists(command, *extra_test_arguments)
