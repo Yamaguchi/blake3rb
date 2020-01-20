@@ -49,4 +49,23 @@ ruby! {
             format!("{}", self.hasher.finalize().to_hex())
         }
     }
+
+    class Blake3Key {
+        struct {
+
+        }
+
+        def initialize(helix) {
+            Blake3Key {
+                helix,
+            }
+        }
+
+        def derive(&self, context: std::string::String, hex: std::string::String) -> std::string::String {
+            let mut output = [0; 32];
+            let key_material = hex::decode(hex).expect("Decoding failed");
+            blake3::derive_key(&context, &key_material[..], &mut output);
+            hex::encode(output)
+        }
+    }
 }

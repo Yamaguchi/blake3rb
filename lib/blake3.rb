@@ -16,6 +16,11 @@ module Blake3
     Hasher.digest(plain, key: key)
   end
 
+  def derive_key(context, input_key)
+    hex = input_key.unpack1('H*')
+    Blake3Key.new.derive(context, hex)
+  end
+
   class Hasher
     def initialize(key: nil)
       if key

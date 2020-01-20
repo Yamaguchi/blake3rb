@@ -13,10 +13,12 @@ RSpec.describe 'TestVectors' do
   pp json = JSON.parse(File.read(path), symbolize_names: true)
 
   key = json[:key]
+  context = 'BLAKE3 2019-12-27 16:29:52 test vectors context'
 
   json[:cases].each do |testcase|
     input = create_input(testcase[:input_len])
     it { expect(Blake3.hexdigest(input)).to eq testcase[:hash][0...64] }
     it { expect(Blake3.hexdigest(input, key: key)).to eq testcase[:keyed_hash][0...64] }
+    it { expect(Blake3.derive_key(context, input)).to eq testcase[:derive_key][0...64] }
   end
 end
