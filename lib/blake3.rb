@@ -6,17 +6,22 @@ require "blake3/version"
 module Blake3
   module_function
 
-  def hexdigest(plain)
-    Hasher.hexdigest(plain)
+  def hexdigest(plain, key: nil)
+    Hasher.hexdigest(plain, key: key)
   end
 
-  def digest(plain)
-    Hasher.digest(plain)
+  def digest(plain, key: nil)
+    Hasher.digest(plain, key: key)
   end
 
   class Hasher
-    def initialize
-      @hasher = Blake3Hasher.new
+    def initialize(key: nil)
+      if key
+        hex = key.unpack1("H*")
+        @hasher = Blake3KeyedHasher.new(hex)
+      else
+        @hasher = Blake3Hasher.new
+      end
     end
 
     def update(plain)
@@ -29,12 +34,12 @@ module Blake3
       @hasher.finalize
     end
 
-    def self.digest(plain)
-      new.update(plain).digest
+    def self.digest(plain, key: nil)
+      new(key: key).update(plain).digest
     end
 
-    def self.hexdigest(plain)
-      new.update(plain).hexdigest
+    def self.hexdigest(plain, key: nil)
+      new(key: key).update(plain).hexdigest
     end
 
     def digest
