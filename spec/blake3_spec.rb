@@ -22,7 +22,7 @@ RSpec.describe Blake3 do
       subject { Blake3.hexdigest('', key: key) }
       let(:key) { 'whats the Elvish word for friend' }
 
-      it { is_expected.to eq '92b2b75604ed3c761f9d6f62392c8a9227ad0ea3f09573e783f1498a4ed60d26' } 
+      it { is_expected.to eq '92b2b75604ed3c761f9d6f62392c8a9227ad0ea3f09573e783f1498a4ed60d26' }
     end
   end
 end
