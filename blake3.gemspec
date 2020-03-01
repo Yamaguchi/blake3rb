@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
 
   spec.extensions = %w[ext/extconf.rb]
   spec.add_development_dependency 'bundler', '~> 1.17'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '>= 12.3.3'
   spec.add_development_dependency 'rspec', '~> 3.0'
 
   spec.add_runtime_dependency 'helix_runtime', '= 0.7.5'
